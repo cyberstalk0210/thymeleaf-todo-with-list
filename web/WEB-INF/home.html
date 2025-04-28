@@ -48,7 +48,7 @@
             <td th:text="${todo.id}"></td>
             <td th:text="${todo.title}"></td>
             <td th:text="${todo.priority}"></td>
-            <td th:text="${#temporals.format(todo.createdAt, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${#temporals.format(todo.created_at, 'dd-MM-yyyy HH:mm')}"></td>
             <td>
                 <a th:href="@{/todos/edit/{id}(id=${todo.id})}" class="btn btn-sm btn-warning me-2">Edit</a>
                 <form th:action="@{/todos/delete/{id}(id=${todo.id})}" method="post" style="display:inline;">

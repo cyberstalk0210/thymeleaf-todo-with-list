@@ -16,6 +16,5 @@ public class Todo {
     private int id;
     private String title;
     private Priority priority;
-//    private boolean completed;
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime created_at = LocalDateTime.now();
 }

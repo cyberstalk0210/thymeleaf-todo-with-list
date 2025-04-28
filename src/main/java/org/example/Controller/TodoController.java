@@ -38,7 +38,7 @@ public class TodoController {
 
     @GetMapping("/todos/edit/{id}")
     public String getEditTodosPage(@PathVariable("id") int id, Model model) {
-        Todo todo = todoDAO.getById(id);
+     Todo todo = todoDAO.getById(id);
         model.addAttribute("todo", todo);
         return "edit";
     }
