@@ -22,36 +22,16 @@
     <header class="text-center text-light mb-4">
         <h1 class="mb-3">My To-Do List</h1>
 
-         Search form
+        <!-- Search form -->
         <form class="search" method="get" th:action="@{/todos/search}">
             <input class="form-control m-auto w-50"
                    type="text"
                    name="keyword"
                    placeholder="Search todos..." />
         </form>
-
     </header>
 
-    <!-- Add new To-Do -->
-    <form th:action="@{/todos/add}" th:object="${todo}" method="post">
-        <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" th:field="*{title}" required />
-        </div>
-
-        <div class="mb-3">
-            <label for="priority" class="form-label">Priority</label>
-            <select class="form-select" id="priority" th:field="*{priority}">
-                <option value="HIGH">HIGH</option>
-                <option value="MEDIUM">MEDIUM</option>
-                <option value="LOW">LOW</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Add</button>
-        <a href="/home" class="btn btn-secondary">Back</a>
-    </form>
-
+    <!-- Display Todos Table -->
     <table class="table table-bordered table-hover w-75 m-auto text-center align-middle">
         <thead class="table-dark">
         <tr>
@@ -63,7 +43,7 @@
         </tr>
         </thead>
 
-        <tbody >
+        <tbody>
         <tr th:each="todo : ${todos}">
             <td th:text="${todo.id}"></td>
             <td th:text="${todo.title}"></td>
@@ -76,9 +56,17 @@
                 </form>
             </td>
         </tr>
-
         </tbody>
     </table>
+
+    <!-- Add validation or no todos found message -->
+    <div th:if="${#lists.isEmpty(todos)}" class="alert alert-warning text-center">
+        No todos found.
+    </div>
+    <div>
+        <a href="/todos/add" class="btn btn-secondary">ADD Todo</a>
+    </div>
+
 </div>
 
 </body>
