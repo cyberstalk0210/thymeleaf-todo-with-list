@@ -11,8 +11,11 @@
     <div class="row">
         <div class="col-md-4">
             <h1>Update Todo</h1>
-            <form th:action="@{/todos/edit}" method="post" th:object="${todo}">
+
+            <form th:action="@{/todos/edit/*{id}}" method="post" th:object="${todo}">
                 <!-- Title Input -->
+                <input type="hidden" th:field="*{id}" />
+
                 <div class = "mb-3" >
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name="title">
